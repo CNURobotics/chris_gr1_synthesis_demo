@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>chris_gr1_behavior_synthesis</name>
+  <version>0.0.0</version>
+  <description>
+    A meta-package for the demo chris_gr1_behavior_synthesis release
+  </description>
+
+  <maintainer email="robotics@cnu.edu">David Conner</maintainer>
+  <license>BSD</license>
+
+  <url>http://ros.org/wiki/flexbe</url>
+  <url type="bugtracker">https://github.com/FlexBE/flexbe_behavior_engine/issues</url>
+
+  <depend>flexbe_behavior_engine</depend>
+  <depend>flexbe_synthesis_demo_behaviors</depend>
+  <depend>flexbe_synthesis_demo_flexbe_states</depend>
+  <depend>flexbe_synthesis_demo_visualization</depend>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+    <!-- <metapackage/> -->
+  </export>
+
+</package>

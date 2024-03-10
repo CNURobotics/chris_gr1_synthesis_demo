@@ -1,0 +1,14 @@
+/file_generation:
+    ros__parameters:
+        capabilities:
+            object_template:
+                interface: InputState
+                parameters:
+                    request: InputState.SELECTED_OBJECT_ID
+                    message: Specify desired object template
+                output_mapping:
+                    data: template_id
+            look_down:
+                interface: TiltHeadState
+                parameters:
+                    desired_tilt: TiltHeadState.DOWN_45

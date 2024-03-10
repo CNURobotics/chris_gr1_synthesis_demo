@@ -1,0 +1,13 @@
+# Generate a message that FlexBE will use to instantiate the State Machine
+
+FSAutomaton automaton
+
+# System name, e.g. "atlas"
+string system
+
+---
+
+flexbe_msgs/StateInstantiation[] state_definition
+
+# Errors when trying to generating StateInstantiations
+SynthesisErrorCodes error_code

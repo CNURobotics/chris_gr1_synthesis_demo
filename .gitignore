@@ -1,0 +1,4 @@
+*.pyc
+*.json
+*.slugsin
+*.structuredslugs

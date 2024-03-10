@@ -1,0 +1,213 @@
+name: atlas
+
+# Mapping from output propositions to outputs of the State Machine
+output:
+    finished: finished
+    failed: failed
+
+# Mapping from activation propositions to parametrized states and their outcomes
+
+### Various robot actions
+pickup_object_a:
+    class_decl:
+        name: :BEHAVIOR
+        behavior_class: Pickup Object
+        param_names: []
+        param_values: []
+    output_mapping:
+        pickup_object_c: [finished]
+        pickup_object_f: [failed]
+    autonomy: 0
+grasp_object_a:
+    class_decl:
+        name: :BEHAVIOR
+        behavior_class: Grasp Object
+        param_names: []
+        param_values: []
+    output_mapping:
+        grasp_object_c: [finished]
+        grasp_object_f: [failed]
+    autonomy: 0
+pregrasp_a:
+    class_decl:
+        name: ExecuteTrajectoryMsgState
+        param_names:
+            - controller
+        param_values:
+            - ExecuteTrajectoryMsgState.CONTROLLER_RIGHT_ARM
+    output_mapping:
+        pregrasp_c: [done]
+        pregrasp_f: [failed]
+    autonomy: 0
+pregrasp_plan_a:
+    class_decl:
+        name: PlanEndeffectorPoseState
+        param_names: []
+        param_values: []
+    output_mapping:
+        pregrasp_plan_c: [planned]
+        pregrasp_plan_f: [failed]
+    autonomy: 0
+    userdata_keys: [target_pose, hand]
+    userdata_remapping: [pregrasp_pose, hand_side]
+pregrasp_pose_a:
+    class_decl:
+        name: GetTemplatePregraspState
+        param_names: []
+        param_values: []
+    output_mapping:
+        pregrasp_pose_c: [done]
+        pregrasp_pose_f: [failed, not_available]
+    autonomy: 0
+    userdata_keys: [preference, pre_grasp]
+    userdata_remapping: [grasp_preference, pregrasp_pose]
+approach_object_a:
+    class_decl:
+        name: WalktoTemplateSM
+        param_names: []
+        param_values: []
+    output_mapping:
+        approach_object_c: [finished]
+        approach_object_f: [failed, aborted]
+    autonomy: 0
+footstep_goal_a:
+    class_decl:
+        name: CreateStepGoalState
+        param_names:
+            - pose_is_pelvis
+        param_values:
+            - 'False'
+    output_mapping:
+        footstep_goal_c: [done]
+        footstep_goal_f: [failed]
+    autonomy: 0
+footstep_plan_a:
+    class_decl:
+        name: PlanFootstepsState
+        param_names:
+            - mode
+        param_values:
+            - PlanFootstepsState.MODE_STEP_2D
+    output_mapping:
+        footstep_plan_c: [planned]
+        footstep_plan_f: [failed]
+    autonomy: 0
+footstep_execution_a:
+    class_decl:
+        name: ExecuteStepPlanActionState
+        param_names: []
+        param_values: []
+    output_mapping:
+        footstep_execution_c: [finished]
+        footstep_execution_f: [failed]
+    autonomy: 0
+look_down_a:
+    class_decl:
+        name: TiltHeadState
+        param_names:
+            - desired_tilt
+        param_values:
+            - TiltHeadState.DOWN_45
+    output_mapping:
+        look_down_c: [done]
+        look_down_f: [failed]
+    autonomy: 0
+
+### Operator Inputs
+object_template_a:
+    class_decl:
+        name: InputState
+        param_names:
+            - request
+            - message
+        param_values:
+            - InputState.SELECTED_OBJECT_ID
+            - '"Specify desired object template"'
+    output_mapping:
+        object_template_c: [received]
+        object_template_f: [aborted, no_connection, data_error]
+    autonomy: 0
+    userdata_keys: [data]
+    userdata_remapping: [template_id]
+target_pose_a:
+    class_decl:
+        name: InputState
+        param_names:
+            - request
+            - message
+        param_values:
+            - InputState.WAYPOINT_GOAL_POSE
+            - '"Provide a target pose for locomotion"'
+    output_mapping:
+        target_pose_c: [received]
+        target_pose_f: [aborted, no_connection, data_error]
+    autonomy: 0
+    userdata_keys: [data]
+    userdata_remapping: [target_pose]
+
+### BDI Control Modes
+manipulate_a:
+    class_decl:
+        name: ChangeControlModeActionState
+        param_names:
+            - target_mode
+        param_values:
+            - ChangeControlModeActionState.MANIPULATE
+    output_mapping:
+        manipulate_c: [changed]
+        manipulate_f: [failed]
+    autonomy: 0
+stand_prep_a:
+    class_decl:
+        name: ChangeControlModeActionState
+        param_names:
+            - target_mode
+        param_values:
+            - ChangeControlModeActionState.STAND_PREP
+    output_mapping:
+        stand_prep_c: [changed]
+        stand_prep_f: [failed]
+    autonomy: 0
+stand_a:
+    class_decl:
+        name: ChangeControlModeActionState
+        param_names:
+            - target_mode
+        param_values:
+            - ChangeControlModeActionState.STAND
+    output_mapping:
+        stand_c: [changed]
+        stand_f: [failed]
+    autonomy: 0
+step_a:
+    class_decl:
+        name: ChangeControlModeActionState
+        param_names:
+            - target_mode
+        param_values:
+            - ChangeControlModeActionState.STEP
+    output_mapping:
+        step_c: [changed]
+        step_f: [failed]
+    autonomy: 0
+walk_a:
+    class_decl:
+        name: ChangeControlModeActionState
+        param_names:
+            - target_mode
+        param_values:
+            - ChangeControlModeActionState.WALK
+    output_mapping:
+        walk_c: [changed]
+        walk_f: [failed]
+    autonomy: 0
+
+### External sensors
+obj_detected:
+    class_decl:
+        name: SensorReading
+        param_names: []
+        param_values: []
+    output_mapping:
+        obj_detected: [found]
+    autonomy: 0

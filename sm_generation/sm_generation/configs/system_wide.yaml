@@ -1,0 +1,175 @@
+name: system_wide 
+output:
+    finished: finished 
+    failed: failed 
+begin_game_a:
+    class_decl:
+        name: LogState
+        param_names: 
+            - text
+        param_values: 
+            - '"Ready to begin WGCF game"'
+    output_mapping:
+        begin_game_f: []
+        begin_game_c: [done]
+    autonomy: 0
+log_finished_a:
+    class_decl:
+        name: LogState
+        param_names: 
+            - text
+        param_values: 
+            - '"Everything has crossed the river"'
+    output_mapping:
+        log_finished_f: []
+        log_finished_c: [done]
+    autonomy: 0
+log_failed_a:
+    class_decl:
+        name: LogState
+        param_names: 
+            - text
+        param_values: 
+            - '"Error in the previous move"'
+    output_mapping:
+        log_failed_f: []
+        log_failed_c: [done]
+    autonomy: 0
+move_wolf_a:
+    class_decl:
+        name: MoveState
+        param_names: 
+            - item
+            - tracker
+        param_values: 
+            - '"wolf"'
+            - '"farmer"'
+    output_mapping:
+        move_wolf_f: [canceled, failed]
+        move_wolf_c: [done]
+    autonomy: 0
+    userdata_keys: [left, right]
+    userdata_remapping: [left, right]
+move_goat_a:
+    class_decl:
+        name: MoveState
+        param_names: 
+            - item
+            - tracker
+        param_values: 
+            - '"goat"'
+            - '"farmer"'
+    output_mapping:
+        move_goat_f: [canceled, failed]
+        move_goat_c: [done]
+    autonomy: 0
+    userdata_keys: [left, right]
+    userdata_remapping: [left, right]
+move_corn_a:
+    class_decl:
+        name: MoveState
+        param_names: 
+            - item
+            - tracker
+        param_values: 
+            - '"corn"'
+            - '"farmer"'
+    output_mapping:
+        move_corn_f: [canceled, failed]
+        move_corn_c: [done]
+    autonomy: 0
+    userdata_keys: [left, right]
+    userdata_remapping: [left, right]
+move_null_a:
+    class_decl:
+        name: MoveState
+        param_names: 
+            - tracker
+        param_values: 
+            - '"farmer"'
+    output_mapping:
+        move_null_f: [canceled, failed]
+        move_null_c: [done]
+    autonomy: 0
+    userdata_keys: [left, right]
+    userdata_remapping: [left, right]
+wgcf_demo_a:
+    class_decl:
+        name: :BEHAVIOR
+        behavior_class: wgcf_demo
+        param_names: []
+        param_values: []
+    output_mapping:
+        wgcf_demo_f: []
+        wgcf_demo_c: []
+    autonomy: 0
+example 4_a:
+    class_decl:
+        name: :BEHAVIOR
+        behavior_class: Example 4
+        param_names: []
+        param_values: []
+    output_mapping:
+        example 4_f: []
+        example 4_c: []
+    autonomy: 0
+flexbe turtlesim demo_a:
+    class_decl:
+        name: :BEHAVIOR
+        behavior_class: FlexBE Turtlesim Demo
+        param_names: []
+        param_values: []
+    output_mapping:
+        flexbe turtlesim demo_f: []
+        flexbe turtlesim demo_c: []
+    autonomy: 0
+turtlesim input state behavior_a:
+    class_decl:
+        name: :BEHAVIOR
+        behavior_class: Turtlesim Input State Behavior
+        param_names: []
+        param_values: []
+    output_mapping:
+        turtlesim input state behavior_f: []
+        turtlesim input state behavior_c: []
+    autonomy: 0
+example 2_a:
+    class_decl:
+        name: :BEHAVIOR
+        behavior_class: Example 2
+        param_names: []
+        param_values: []
+    output_mapping:
+        example 2_f: []
+        example 2_c: []
+    autonomy: 0
+turtlesim rotation state behavior_a:
+    class_decl:
+        name: :BEHAVIOR
+        behavior_class: Turtlesim Rotation State Behavior
+        param_names: []
+        param_values: []
+    output_mapping:
+        turtlesim rotation state behavior_f: []
+        turtlesim rotation state behavior_c: []
+    autonomy: 0
+example 1_a:
+    class_decl:
+        name: :BEHAVIOR
+        behavior_class: Example 1
+        param_names: []
+        param_values: []
+    output_mapping:
+        example 1_f: []
+        example 1_c: []
+    autonomy: 0
+example concurrent behavior_a:
+    class_decl:
+        name: :BEHAVIOR
+        behavior_class: Example Concurrent Behavior
+        param_names: []
+        param_values: []
+    output_mapping:
+        example concurrent behavior_f: []
+        example concurrent behavior_c: []
+    autonomy: 0

@@ -1,0 +1,7 @@
+atlas: 'atlas.yaml'
+simple: 'simple.yaml'
+test: 'test.yaml'
+test_nonexistent: 'test_nonexistent.yaml'
+system_wide: 'system_wide.yaml'
+flex_nav: 'flex_nav.yaml'
+turtlebot: 'turtlebot.yaml'

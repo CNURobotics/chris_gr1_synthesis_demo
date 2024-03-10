@@ -1,0 +1,27 @@
+# GOAL
+
+# Behavior Synthesis request passed to the BS manager
+BehaviorSynthesisRequest request
+
+# Behavior Synthesis options
+SynthesisOptions synthesis_options
+
+---
+
+# RESULT
+
+# An error code reflecting what went wrong
+SynthesisErrorCodes error_code
+
+# The synthesized behavior as a list of state instantiation descriptions
+flexbe_msgs/StateInstantiation[] states
+
+---
+
+# FEEDBACK
+
+# The internal state that the Behavior Synthesis action currently is in
+string status
+
+# The progress of the synthesis process, from 0 (started) to 1 (completed)
+float32 progress

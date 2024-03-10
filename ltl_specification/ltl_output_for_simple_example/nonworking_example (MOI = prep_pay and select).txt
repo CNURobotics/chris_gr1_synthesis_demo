@@ -1,0 +1,71 @@
+[INPUT]
+['pay_c',
+ 'select_f',
+ 'select_c',
+ 'soda_f',
+ 'soda_c',
+ 'prep_pay_f',
+ 'prep_pay_c']
+[OUTPUT]
+['select_a', 'failed', 'finished', 'soda_a', 'soda_m', 'prep_pay_a']
+[SYS_INIT]
+['! select_a',
+ '! failed',
+ '! finished',
+ '! soda_a',
+ '! soda_m',
+ '! prep_pay_a']
+[ENV_INIT]
+['! pay_c',
+ '! select_f',
+ '! select_c',
+ '! soda_f',
+ '! soda_c',
+ '! prep_pay_f',
+ 'prep_pay_c']
+[SYS_TRANS]
+['next(select_c) -> next(! select_a & ! prep_pay_a)',
+ 'next(prep_pay_c) -> (next(prep_pay_a & ! select_a) | next(! select_a & ! prep_pay_a))',
+ '(prep_pay_a & (next(prep_pay_c) | next(prep_pay_f))) -> next(! prep_pay_a)',
+ '(select_a & (next(select_c) | next(select_f))) -> next(! select_a)',
+ '! pay_c -> ! select_a',
+ '(select_a & (next(select_c) | next(select_f))) -> next(! select_a)',
+ '(! pay_c | ! select_c) -> ! soda_a',
+ '(soda_a & (next(soda_c) | next(soda_f))) -> next(! soda_a)',
+ '((soda_a & next(soda_c)) | soda_m) <-> next(soda_m)',
+ 'finished <-> soda_m',
+ 'next(failed) <-> ((next(prep_pay_f) | next(select_f) | next(soda_f)) | failed)']
+[ENV_TRANS]
+['next(prep_pay_c) <-> ! next(select_c)',
+ 'next(select_c) <-> ! next(prep_pay_c)',
+ '(prep_pay_c & (prep_pay_a & ! select_a)) -> (next(prep_pay_f) | next(prep_pay_c))',
+ '(select_c & (! select_a & ! prep_pay_a)) -> next(select_c)',
+ '(select_f & (! select_a & ! prep_pay_a)) -> next(select_f)',
+ '(prep_pay_c & (! select_a & ! prep_pay_a)) -> next(prep_pay_c)',
+ '(prep_pay_f & (! select_a & ! prep_pay_a)) -> next(prep_pay_f)',
+ '(! select_c & ! select_a) -> next(! select_c)',
+ '(! select_f & ! select_a) -> next(! select_f)',
+ '(! prep_pay_c & ! prep_pay_a) -> next(! prep_pay_c)',
+ '(! prep_pay_f & ! prep_pay_a) -> next(! prep_pay_f)',
+ 'next(prep_pay_c) -> next(! prep_pay_f)',
+ 'next(prep_pay_f) -> next(! prep_pay_c)',
+ 'next(select_c) -> next(! select_f)',
+ 'next(select_f) -> next(! select_c)',
+ 'next(select_c) -> next(! select_f)',
+ 'next(select_f) -> next(! select_c)',
+ '(! select_c & ! select_a) -> next(! select_c)',
+ '(! select_f & ! select_a) -> next(! select_f)',
+ '(select_c & ! select_a) -> next(select_c)',
+ '(select_f & ! select_a) -> next(select_f)',
+ 'next(soda_c) -> next(! soda_f)',
+ 'next(soda_f) -> next(! soda_c)',
+ '(! soda_c & ! soda_a) -> next(! soda_c)',
+ '(! soda_f & ! soda_a) -> next(! soda_f)',
+ '(soda_c & ! soda_a) -> next(soda_c)',
+ '(soda_f & ! soda_a) -> next(soda_f)']
+[SYS_LIVENESS]
+['(finished | failed)']
+[ENV_LIVENESS]
+['((((select_a & ! prep_pay_a) & (next(select_c) | next(select_f))) | ((prep_pay_a & ! select_a) & (next(prep_pay_c) | next(prep_pay_f)))) | (! select_a & ! prep_pay_a))',
+ '((select_a & (next(select_c) | next(select_f))) | ! select_a)',
+ '((soda_a & (next(soda_c) | next(soda_f))) | ! soda_a)']

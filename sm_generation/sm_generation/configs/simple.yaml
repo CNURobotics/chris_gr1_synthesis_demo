@@ -1,0 +1,59 @@
+name: simple
+output:
+    finished: finished
+    failed: failed
+prep_pay_a:
+    class_decl:
+        name: LogState
+        param_names:
+            - text
+        param_values:
+            - '"Prep to pay"'
+    output_mapping:
+        prep_pay_f: [failed]
+        prep_pay_c: [done]
+    autonomy: 0
+pay_a:
+    class_decl:
+        name: LogState
+        param_names:
+            - text
+        param_values:
+            - '"Insert Coin"'
+    output_mapping:
+        pay_f: [failed]
+        pay_c: [done]
+    autonomy: 0
+select_a:
+    class_decl:
+        name: LogState
+        param_names:
+            - text
+        param_values:
+            - '"Select a Drink"'
+    output_mapping:
+        select_f: [failed]
+        select_c: [done]
+    autonomy: 0
+soda_a:
+    class_decl:
+        name: LogState
+        param_names:
+            - text
+        param_values:
+            - '"Selected Soda"'
+    output_mapping:
+        soda_f: [failed]
+        soda_c: [done]
+    autonomy: 0
+beer_a:
+    class_decl:
+        name: LogState
+        param_names:
+            - text
+        param_values:
+            - '"Selected Beer"'
+    output_mapping:
+        beer_f: [failed]
+        beer_c: [done]
+    autonomy: 0

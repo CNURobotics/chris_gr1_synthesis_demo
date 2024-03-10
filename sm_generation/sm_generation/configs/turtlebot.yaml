@@ -1,0 +1,55 @@
+name: turtlebot
+
+output:
+    finished: finished
+    failed: failed
+ClearCostmapPrep_a:
+    class_decl:
+        name: LogState
+        param_names: []
+        param_values: []
+    output_mapping:
+        ClearCostmapPrep_f: []
+        ClearCostmapPrep_c: []
+    autonomy: 0
+ClearCostmap_a:
+    class_decl:
+        name: ClearCostmapsState
+        param_names: []
+        param_values: []
+    output_mapping:
+        ClearCostmap_f: [failed]
+        ClearCostmap_c: [done]
+    autonomy: 0
+ReceiveGoal_a:
+    class_decl:
+        name: GetPoseState
+        param_names: []
+        param_values: []
+    output_mapping:
+        ReceiveGoal_f: []
+        ReceiveGoal_c: [done]
+    autonomy: 0
+    userdata_keys: [goal]
+    userdata_remapping: [goal]
+ReceivePath_a:
+    class_decl:
+        name: GetPathState
+        param_names: []
+        param_values: []
+    output_mapping:
+        ReceivePath_f: [empty,failed]
+        ReceivePath_c: [planned]
+    autonomy: 0
+    userdata_keys: [plan]
+    userdata_remapping: [plan]
+turtlebot_execute_path_a:
+    class_decl:
+        name: :BEHAVIOR
+        behavior_class: Turtlebot Execute Path
+        param_names: []
+        param_values: []
+    output_mapping:
+        turtlebot_execute_path_f: [failed]
+        turtlebot_execute_path_c: [finished]
+    autonomy: 0

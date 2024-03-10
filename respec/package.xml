@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<?xml-model
+    href="http://download.ros.org/schema/package_format3.xsd"
+    schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+    <name>respec</name>
+    <version>0.1.0</version>
+    <description>
+        A Python framework for generating Linear Temporal Logic formulas for Robotics applications
+    </description>
+    <author email="sm2296@cornell.edu">Spyros Maniatopoulos</author>
+    <maintainer email="sm2296@cornell.edu">Spyros Maniatopoulos</maintainer>
+    <license>BSD</license>
+    
+    <export>
+        <build_type>ament_python</build_type>
+    </export>
+</package>

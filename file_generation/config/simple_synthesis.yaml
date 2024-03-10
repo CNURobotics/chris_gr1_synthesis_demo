@@ -1,0 +1,26 @@
+file_generation:
+    ros__parameters:
+        capabilities:
+            prep_pay:
+                interface: LogState
+                # parameters:
+            pay:
+                interface: LogState
+                parameters:
+                    text: Insert Coin
+                request_modes: [prep_pay]
+            select:
+                interface: LogState
+                parameters:
+                    text: Select a Beverage
+                request_modes: [pay]
+            soda:
+                interface: LogState
+                parameters:
+                    text: Giving soda
+                request_modes: [select]
+            beer:
+                interface: LogState
+                parameters:
+                    text: Giving Beer
+                request_modes: [select]

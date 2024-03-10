@@ -1,0 +1,90 @@
+name: atlas
+
+# map from output proposition (of a state) to output for entire SM
+output:
+    finished: finished
+    failed: failed
+
+pickup_a:
+    class_decl:
+        name: ExecuteTrajectoryMsgState
+        param_names:
+            - controller
+        param_values:
+            - ExecuteTrajectoryMsgState.CONTROLLER_LEFT_ARM
+    output_mapping:
+        pickup_c: done
+        failed : failed
+    autonomy: 0
+grasp_a:
+    class_decl:
+        name: GraspObjectSM
+        param_names: []
+        param_values: []
+    output_mapping:
+        grasp_c: finished
+        failed : failed
+    autonomy: 0
+manipulate_a:
+    class_decl:
+        name: ChangeControlModeActionState
+        param_names:
+            - target_mode
+        param_values:
+            - ChangeControlModeActionState.MANIPULATE
+    output_mapping:
+        manipulate_c: changed
+        failed : failed
+    autonomy: 0
+stand_prep_a:
+    class_decl:
+        name: ChangeControlModeActionState
+        param_names:
+            - target_mode
+        param_values:
+            - ChangeControlModeActionState.STAND_PREP
+    output_mapping:
+        stand_prep_c: changed
+        failed : failed
+    autonomy: 0
+stand_a:
+    class_decl:
+        name: ChangeControlModeActionState
+        param_names:
+            - target_mode
+        param_values:
+            - ChangeControlModeActionState.STAND
+    output_mapping:
+        stand_c: changed
+        failed : failed
+    autonomy: 0
+step_a:
+    class_decl:
+        name: ChangeControlModeActionState
+        param_names:
+            - target_mode
+        param_values:
+            - ChangeControlModeActionState.STEP
+    output_mapping:
+        step_c: changed
+        failed : failed
+    autonomy: 0
+walk_a:
+    class_decl:
+        name: ChangeControlModeActionState
+        param_names:
+            - target_mode
+        param_values:
+            - ChangeControlModeActionState.WALk
+    output_mapping:
+        walk_c: changed
+        failed : failed
+    autonomy: 0
+obj_detected:
+    class_decl:
+        name: SensorReading
+        param_names: []
+        param_values: []
+    output_mapping:
+        obj_detected: found
+    autonomy: 0

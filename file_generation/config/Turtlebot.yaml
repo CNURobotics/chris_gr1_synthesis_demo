@@ -1,0 +1,23 @@
+/file_generation:
+    ros__parameters:
+        capabilities:
+            ClearCostmapPrep:
+                interface: LogState
+                # parameters: 
+            ClearCostmap:
+                interface: ClearCostmapAction
+                parameters:
+                    costmap_topics: ['high_level_planner/clear_costmap','low_level_planner/clear_costmap']
+                request_modes: [ClearCostmapPrep]
+            ReceiveGoal:
+                interface: PoseStamped
+                parameters:
+                    topic: flex_nav_global/goal
+                package: flex_nav_flexbe_states
+                request_modes: [ClearCostmap]
+            ReceivePath:
+                interface: GetPathAction
+                parameters:
+                    planner_topic: high_level_planner
+                package: flex_nav_flexbe_states
+                request_modes: [ReceiveGoal, ReceivePath]

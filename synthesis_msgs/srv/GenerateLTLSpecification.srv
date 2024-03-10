@@ -1,0 +1,22 @@
+# The LTL Compilation request consists of a
+# partial specification in a structured format.
+# The service will fill in the gaps
+# and return a complete LTL formula.
+
+# Robot/system to be used for LTL specification compilation
+string system
+
+# The system's goals, usually provided by the user
+string[] goals
+
+# The system's initial conditions
+string[] initial_conditions
+
+# The outcomes of the resulting synthesized state machine, if any
+string[] sm_outcomes
+
+---
+
+LTLSpecification ltl_specification
+
+SynthesisErrorCodes error_code

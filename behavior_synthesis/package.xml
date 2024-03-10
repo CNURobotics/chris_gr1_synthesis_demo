@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<?xml-model
+    href="http://download.ros.org/schema/package_format3.xsd"
+    schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+    <name>behavior_synthesis</name>
+    <version>0.0.0</version>
+    <description>The behavior_synthesis package</description>
+    <maintainer email="johnwesley.hayhurst.12@cnu.edu">John Wesley Hayhurst</maintainer>
+    <license>TODO</license>
+
+    <depend>file_generation</depend>
+    <depend>ltl_specification</depend>
+    <depend>ltl_synthesizer</depend>
+    <depend>respec</depend>
+    <depend>sm_generation</depend>
+    <depend>synthesis_manager</depend>
+    <depend>synthesis_msgs</depend>
+
+    <export>
+        <build_type>ament_cmake</build_type>
+    </export>
+</package>

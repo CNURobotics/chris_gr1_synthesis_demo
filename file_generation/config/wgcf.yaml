@@ -1,0 +1,34 @@
+file_generation:
+    ros__parameters:
+        capabilities:
+            begin_game:
+                interface: LogState
+                parameters:
+                    text: Ready to begin WGCF game
+            log_finished:
+                interface: LogState
+                parameters:
+                    text: Everything has crossed the river
+            log_failed:
+                interface: LogState
+                parameters:
+                    text: Error in the previous move
+            move_wolf:
+                interface: MoveState
+                parameters:
+                    item: wolf
+                    tracker: farmer
+            move_goat:
+                interface: MoveState
+                parameters:
+                    item: goat
+                    tracker: farmer
+            move_corn:
+                interface: MoveState
+                parameters:
+                    item: corn
+                    tracker: farmer
+            move_null:
+                interface: MoveState
+                parameters:
+                    tracker: farmer      

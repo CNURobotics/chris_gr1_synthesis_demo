@@ -1,0 +1,17 @@
+/file_generation:
+    ros__parameters:
+        capabilities:
+            get_pose_prep:
+                interface: LogState
+                parameters: {}
+            get_pose:
+                interface: PoseStamped
+                parameters: {}
+                request_modes: [get_pose_prep]
+                package: flex_nav_flexbe_states
+            get_path:
+                interface: GetPathAction
+                parameters:
+                    planner_topic: high_level_planner
+                request_modes: [get_path,get_pose]
+                package: flex_nav_flexbe_states

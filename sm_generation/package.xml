@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<?xml-model
+    href="http://download.ros.org/schema/package_format3.xsd"
+    schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+    <name>sm_generation</name>
+    <version>1.0.0</version>
+    <description>
+        A service that converts the output of the LTL Synthesizer and create
+        class parameters to generate code.
+    </description>
+    <author email="vhp22@cornell.edu">Vitchyr Pong</author>
+    <maintainer email="vhp22@cornell.edu">Vitchyr Pong</maintainer>
+    <license>BSD</license>
+
+    <depend>rclpy</depend>
+    <depend>std_msgs</depend>
+    <test_depend>flexbe_msgs</test_depend>
+    <test_depend>synthesis_msgs</test_depend>
+
+    <export>
+        <build_type>ament_python</build_type>
+    </export>
+</package>

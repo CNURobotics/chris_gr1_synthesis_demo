@@ -1,0 +1,9 @@
+transition_system:
+action_preconditions:
+    begin_game: []
+    move_wolf: []
+    move_corn: []
+    move_null: []
+    log_failed: []
+    move_goat: []
+    log_finished: []

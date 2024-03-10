@@ -1,0 +1,28 @@
+/file_generation:
+    ros__parameters:
+        capabilities:
+            stand_prep:
+                interface: ChangeControlModeAction
+                parameters:
+                    target_mode: ChangeControlModeActionState.STAND_PREP
+                request_modes: [stand_prep]
+            stand:
+                interface: ChangeControlModeAction
+                parameters:
+                    target_mode: ChangeControlModeActionState.STAND
+                request_modes: [stand_prep, stand, manipulate, walk]
+            manipulate:
+                interface: ChangeControlModeAction
+                parameters:
+                    target_mode: ChangeControlModeActionState.MANIPULATE
+                request_modes: [stand, manipulate]
+            step:
+                interface: ChangeControlModeAction
+                parameters:
+                    target_mode: ChangeControlModeActionState.STEP
+                request_modes: [stand, step]
+            walk:
+                interface: ChangeControlModeAction
+                parameters:
+                    target_mode: ChangeControlModeActionState.WALK
+                request_modes: [stand, walk]

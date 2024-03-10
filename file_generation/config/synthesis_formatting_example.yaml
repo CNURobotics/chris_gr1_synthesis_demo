@@ -1,0 +1,26 @@
+/file_generation:
+    ros__parameters:
+        capabilities:
+            get_local_path:
+                interface: GetPathAction
+                parameters:
+                    test: testing
+                    testering: testeringing
+                    topic: /get_local_path
+            get_global_path:
+                interface: GetPathAction
+                parameters: {}
+            set_global_pose:
+                interface: PoseStamped
+                parameters:
+                    topic: /set_global_pose_target
+            stand:
+                interface: ChangeControllModeAction
+                parameters:
+                    topic: /stand
+                request_modes: [stand_prep, walk, step, manipulate]
+            manipulate:
+                interface: ChangeControllModeAction
+                parameters:
+                    topic: /manipulate
+                request_modes: [step, manipulate]

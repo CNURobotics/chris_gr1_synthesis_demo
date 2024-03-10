@@ -1,0 +1,66 @@
+name: flex_nav
+
+output:
+    finished: finished
+    failed: failed
+get_pose_prep_a:
+    class_decl:
+        name: LogState
+        param_names: []
+        param_values: []
+    output_mapping:
+        get_pose_prep_f: []
+        get_pose_prep_c: []
+    autonomy: 0
+get_pose_a:
+    class_decl:
+        name: GetPoseState
+        param_names: []
+        param_values: []
+    output_mapping:
+        get_pose_f: []
+        get_pose_c: [done]
+    autonomy: 0
+    userdata_keys: [goal]
+    userdata_remapping: [goal]
+get_path_a:
+    class_decl:
+        name: GetPathState
+        param_names: []
+        param_values: []
+    output_mapping:
+        get_path_f: [empty,failed]
+        get_path_c: [planned]
+    autonomy: 0
+    userdata_keys: [plan]
+    userdata_remapping: [plan]
+create_navigate_a:
+    class_decl:
+        name: :BEHAVIOR
+        behavior_class: Create Navigate
+        param_names: []
+        param_values: []
+    output_mapping:
+        create_navigate_f: [failed]
+        create_navigate_c: [finished]
+    autonomy: 0
+create_execute_decision_a:
+    class_decl:
+        name: :BEHAVIOR
+        behavior_class: Create Execute Decision
+        param_names: []
+        param_values: []
+    output_mapping:
+        create_execute_decision_c: [finished]
+        create_execute_decision_f: [failed]
+    autonomy: 0
+create_continue_decision_a:
+    class_decl:
+        name: :BEHAVIOR
+        behavior_class: Create Continue Decision
+        param_names: []
+        param_values: []
+    output_mapping:
+        create_continue_decision_f: [failed]
+        create_continue_decision_c: [finished]
+    autonomy: 0
